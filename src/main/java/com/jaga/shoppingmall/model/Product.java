@@ -15,30 +15,13 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product {
 	
 		@Id
-       private String id;
+       private int id;
        private String name;
        private String description;
-       private int price;
-      
-       private String CategoryId;
-       public String getCategoryId() {
-		return CategoryId;
-	}
-	public void setCategoryId(String categoryId) {
-		CategoryId = categoryId;
-	}
-	public String getSupplierId() {
-		return SupplierId;
-	}
-	public void setSupplierId(String supplierId) {
-		SupplierId = supplierId;
-	}
-	private String SupplierId;
-      
-	public String getId() {
+       public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -59,7 +42,9 @@ public class Product {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	
+	private int price;
+      
+       
 	@Transient
 	private MultipartFile image;
 	public MultipartFile getImage() {
@@ -69,5 +54,31 @@ public class Product {
 		this.image = image;
 	}
 	
+	private int categoryid;
+	private int supplierid;
+	public int getCategoryid() {
+		return categoryid;
+	}
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
+	public int getSupplierid() {
+		return supplierid;
+	}
+	public void setSupplierid(int supplierid) {
+		this.supplierid = supplierid;
+	}
+	
 	
 }
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	

@@ -30,28 +30,15 @@ Description:<form:input path="description" /><br>
 		<input type="submit" value="add/edit" />
 	</form:form>
 	
-    <%--<c:url var="delaction" value="delcategory"></c:url>
-	<form:form action="${delaction}" commandName="category">
-	Id:<form:input path="id" /><br>
-	<input type="submit" value="delete">
-	</form:form>
-	
-    <c:url var="addAction" value="editcategory"></c:url>
-	<form:form action="${addAction}" commandName="category">
-Id:<form:input path="id" /><br>
-Name:<form:input path="name" /><br>
-Description:<form:input path="description" /><br>
-		<input type="submit" value="edit" />
-	</form:form>--%>
-	
+    
 	<div align="center">
 		<table style="width:88%">
 		<caption><center><h3>Category</h3></center></caption>
 		<thead>
 		<tr>
-		<th>Id</th>
-		<th>Name</th>
-		<th>Description</th>
+		<th>Category Id</th>
+		<th>Category Name</th>
+		<th>Category Description</th>
 		<th>Edit</th>
 		<th>Delete</th>
 		</tr>
@@ -62,8 +49,8 @@ Description:<form:input path="description" /><br>
 <td><c:out value="${category.id }"></c:out>
 <td><c:out value="${category.name }"></c:out>
 <td><c:out value="${category.description }"></c:out>
-<td><a href="addeditcategory/${category.id}"><img alt="Edit" src=""></a>
-<td><a href="adddeletecategory/${category.id}"><img alt="Delete" src=""></a>
+<td><a href="addeditcategory/${category.id}"><img alt="Edit" src="C:\Users\shravya\Desktop\edits.jpg"></a>
+<td><a href="adddeletecategory/${category.id}"><img alt="Delete" src="C:\Users\shravya\Desktop\deletes.jpg"></a>
 </tr>
 </c:forEach>
 </tbody>

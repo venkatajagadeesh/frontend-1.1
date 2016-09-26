@@ -29,14 +29,6 @@ public class CategoryController {
     	return "redirect:/Category";
     }
 	
-	 /*@RequestMapping(value="delcategory")
-	   public String deletecategory(@ModelAttribute("category")Category category, Model m)
-	   {
-	    	categoryDAO.delete(category);
-	    m.addAttribute("del","category deleted successfully");
-	    return "Home";
-	   }*/
-
     @RequestMapping(value="Category")
    public ModelAndView categorypage(@ModelAttribute("category") Category category,BindingResult result,
    		@ModelAttribute("category1") Category category1,BindingResult result1)
@@ -50,7 +42,7 @@ public class CategoryController {
    }
     
     @RequestMapping(value={"addeditcategory/{id}"})
-    public String Categorypagedelete(@PathVariable("id") String id,RedirectAttributes attributes){
+    public String Categorypagedelete(@PathVariable("id") int id,RedirectAttributes attributes){
    	 attributes.addFlashAttribute("category1",this.categoryDAO.get(id));
    	 return "redirect:/Category";
     }

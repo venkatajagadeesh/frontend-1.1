@@ -34,30 +34,29 @@ public class ProductController {
 	private Path path;
 	
 	
-	@RequestMapping(value={"editproduct","addeditproduct/{id}/editproduct"})
-    public String addproduct(@ModelAttribute("product")Product product,HttpServletRequest request, Model m)
+	@RequestMapping(value="editproduct")
+    public String editproduct(@ModelAttribute("product")Product product, HttpServletRequest request,Model m)
     {
 		productDAO.saveOrUpdate(product);
-	    MultipartFile file=product.getImage();
-	    String rootDirectory = request.getSession().getServletContext().getRealPath("/");
-	    setPath(Paths.get(rootDirectory +"\\resources\\images\\"+product.getId()+".jpg"));
-	    if(file !=null && !file.isEmpty()){
-	    	try{
-	    		System.out.println("image saving start");
-	    		file.transferTo(new File(path.toString()));
-	    		System.out.println("image saved");
-	    		}catch (Exception e) {
-	    			e.printStackTrace();
-	    			System.out.println("error");
-	    			throw new RuntimeException("item image saving failed",e);
-	    	}
-	    }
+		MultipartFile file=product.getImage();
+		String rootDirectory = request.getSession().getServletContext().getRealPath("/");
+		path = Paths.get(rootDirectory +"\\resources\\images\\product\\"+product.getId()+".jpg");
+		if (file !=null && !file.isEmpty()) {
+			try{
+				System.out.println("image saving start");
+				file.transferTo(new File(path.toString()));
+				System.out.println("image saved");
+			} catch (Exception e) {
+				e.printStackTrace();
+				System.out.println("Error");
+				throw new RuntimeException("item image saving failed",e);
+			}
+		}
     	return "redirect:/Product";
-    }
+ }
 
  @RequestMapping(value="Product")
-public ModelAndView productpage(@ModelAttribute("product") Product product,BindingResult result,
-		@ModelAttribute("product1") Product product1,BindingResult result1)
+public ModelAndView productpage(@ModelAttribute("product") Product product,BindingResult result)
 {
  	
 	 ModelAndView mv= new ModelAndView("/Admin");
@@ -68,24 +67,17 @@ public ModelAndView productpage(@ModelAttribute("product") Product product,Bindi
 	mv.addObject("UserClickedproduct", "true");
 	return mv;
 }
- 
  @RequestMapping(value={"addeditproduct/{id}"})
- public String Productpagedelete(@PathVariable("id") String id,RedirectAttributes attributes){
-	 attributes.addFlashAttribute("product1",this.productDAO.get(id));
+ public String Productpageedit(@PathVariable("id") int id,RedirectAttributes attributes){
+	 attributes.addFlashAttribute("product",this.productDAO.get(id));
 	 return "redirect:/Product";
  }
  @RequestMapping(value={"adddeleteproduct/{id}"})
- public String Productpageedit(@ModelAttribute("product") Product product,Model m){
+ public String Productpagedelete(@ModelAttribute("product") Product product,Model m){
  	productDAO.delete(product);
 	 return "redirect:/Product";
  }
-
-public Path getPath() {
-	return path;
 }
 
-public void setPath(Path path) {
-	this.path = path;
-}
-}
-
+	
+	

@@ -12,14 +12,15 @@ uri="http://www.springframework.org/tags/form" %>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Admin Page</title>
+<title>Admin</title>
 <style>
 ul{
 list-style-type: none;
 margin: 10;
 padding: 0;
+
 overflow: hidden;
-background-colour #06DEEC:
+background-colour #06DEEC;
 }
 li{
 float: Left;
@@ -28,8 +29,9 @@ li a {
 display: inline-black;
 colour: red;
 text-align: centre;
-padding: 4px 16px;
-text-decoration: none
+padding: 4px 16px;    
+
+text-decoration: none                                                                                  
 }
 
 li a:hover{
@@ -40,9 +42,10 @@ background-colour: black;
 <body>
 
 <div class="container">
+     <%-- <a href="#" class="btn btn-info btn-lo> --%>
       <span class="glyphicon glyphicon-home"></span>
 </div>
-<center><h3>Shopping Mall</h3></center>
+<center><h3> Welcome to shopping cart</h3></center>
 ${message}<br>
 <hr color="blue">
 <div>
@@ -54,25 +57,8 @@ ${message}<br>
  </div>
 ${msg}
 ${msg1}
-<script>
-
-var app= angular.module("my app", [ngRoute]);
-app.config(function($routeProvider) {
-	$routeProvider
-	.when("/", {
-	   templateUrl :"Home"	
-	})
-	.when("Product", {
-		 templateUrl :"Product"	
-    })
-	.when("Supplier", {
-		 templateUrl :"Supplier"	
-	})
-	.when("Category", {
-		 templateUrl :"Category"	
-	});
-});
-</script>
+<h1>Welcome Admin</h1>
+<div align="right"><a href=<c:url value="perform_logout"/>>logout</a></div>
  <c:choose>
 <c:when test="${UserClickedsupplier}">
 <c:import url="/WEB-INF/view/Supplier.jsp"></c:import>

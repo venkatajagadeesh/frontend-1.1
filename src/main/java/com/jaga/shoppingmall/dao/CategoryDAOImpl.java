@@ -73,4 +73,9 @@ Query query = sessionFactory.getCurrentSession().createQuery(hql);
 return query.list();
 }
 
+public Category get(int id) {
+	// TODO Auto-generated method stub
+	return null;
+}
+
 }

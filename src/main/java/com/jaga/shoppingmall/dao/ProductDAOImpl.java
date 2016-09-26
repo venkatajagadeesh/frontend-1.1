@@ -43,7 +43,7 @@ public class ProductDAOImpl implements ProductDAO {
 	}
 	@Transactional
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public  Product get(String id){
+	public  Product get(int id){
 		
 		String hql = "from Product where id= "+ "'"+ id+"'" ;
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
@@ -66,9 +66,10 @@ public class ProductDAOImpl implements ProductDAO {
 	Query query = sessionFactory.getCurrentSession().createQuery(hql);
 	return query.list();
 	}
-
-	
-
+	public Object getproduct(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 		
 	
 }

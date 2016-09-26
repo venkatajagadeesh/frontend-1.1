@@ -1,6 +1,7 @@
 package com.jaga.shoppingmall.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -12,24 +13,40 @@ import org.springframework.stereotype.Component;
 public class UserDetails {
 
 	@Id
-	private String id;
-	private String name;
+	@GeneratedValue
+	private int id;
+	private String username;
 	private String password;
 	private String mail;
 	private String contact;
-	private String adders;
+	private String address;
 	private String role;
-	public String getId() {
+	private boolean enabled;
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean b) {
+		this.enabled = b;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public String getUsername() {
+		return username;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 	public String getPassword() {
 		return password;
@@ -49,17 +66,15 @@ public class UserDetails {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public String getAdders() {
-		return adders;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdders(String adders) {
-		this.adders = adders;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getRole() {
-		return role;
-	}
-	public void setRole(String role) {
-		this.role = role;
+	public Object getUserId() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

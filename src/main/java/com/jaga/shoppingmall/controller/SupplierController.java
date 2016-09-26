@@ -18,23 +18,13 @@ public class SupplierController {
 	
     @Autowired
 	SupplierDAO supplierDAO;
-    @Autowired
-    Supplier supplier;
-    
+       
     @RequestMapping(value={"editsupplier","addeditsupplier/{id}/editsupplier"})
     public String addsupplier(@ModelAttribute("supplier")Supplier supplier, Model m)
     {
     	supplierDAO.saveOrUpdate(supplier);
-    	return "Home";
+    	return "redirect:/Supplier";
     }
-    /*@RequestMapping(value="delsupplier")
-   public String deletesupplier(@ModelAttribute("supplier")Supplier supplier, Model m)
-   {
-    	supplierDAO.delete(supplier);
-    m.addAttribute("del","product deleted successfully");
-    return "Home";
-   }*/
-    
     
      @RequestMapping(value="Supplier")
     public ModelAndView supplier(@ModelAttribute("supplier") Supplier supplier,BindingResult result,
@@ -47,7 +37,7 @@ public class SupplierController {
     	return mv;
     }
      @RequestMapping(value={"addeditsupplier/{id}"})
-     public String Supplierpagedelete(@PathVariable("id") String id,RedirectAttributes attributes){
+     public String Supplierpagedelete(@PathVariable("id") int id,RedirectAttributes attributes){
     	 attributes.addFlashAttribute("supplier1",this.supplierDAO.get(id));
     	 return "redirect:/Supplier";
      }
