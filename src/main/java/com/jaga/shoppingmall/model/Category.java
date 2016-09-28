@@ -1,5 +1,6 @@
 package com.jaga.shoppingmall.model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import org.springframework.stereotype.Component;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Component;
 public class Category {
 
 		@Id
+		@GeneratedValue
 		private int id;
 		private String name;
 		private String description;

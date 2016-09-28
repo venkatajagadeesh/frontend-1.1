@@ -19,16 +19,16 @@ public class RegController {
 	
 	
 	@RequestMapping(value="adduser")
-	public String addsupplier(@ModelAttribute("userDetails") UserDetails  userDetails, Model m,RedirectAttributes attributes)
+	public String adduser(@ModelAttribute("userDetails") UserDetails  userDetails, Model m)
 	{
         userDetails.setRole("ROLE_USER");
         userDetails.setEnabled(true);
-        if(userDetailsDAO.saveOrUpdate(userDetails)==true){
-        	attributes.addFlashAttribute("registered", "You Have Successfully Registered with us Thank You...");
+        userDetailsDAO.saveOrUpdate(userDetails);
+        	/*attributes.addFlashAttribute("registered", "You Have Successfully Registered with us Thank You...");
         }
         else{
         	attributes.addFlashAttribute("registered","Registration failed Please try again");
-        }
+        }*/
 		return "redirect:/Registration";
 	}
 	@RequestMapping(value="Registration")

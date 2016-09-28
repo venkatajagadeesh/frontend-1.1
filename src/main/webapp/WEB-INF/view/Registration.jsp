@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Registration</title>
 </head>
-<body>
+<body background="C:\Users\KV Jagadeesh\Desktop\Codes\Images\jio.jpg">
 <style>
 
 </style>

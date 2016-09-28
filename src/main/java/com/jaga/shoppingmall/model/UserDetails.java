@@ -72,10 +72,7 @@ public class UserDetails {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Object getUserId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	
 
 	

@@ -5,107 +5,105 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="<c:url value="/resources/table1.css" />">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Product</title>
-<style>
-table {
-font-family:arial, sans-serif;
-border-collapse:collapse;
-width:100%;
-}
-td,tr,th {
-border:2px solid #dddddd;
-text-align: center;
-padding: 8px;
-}
-</style>
 </head>
-<body>
+<body background="C:\Users\KV Jagadeesh\Desktop\Codes\Images\htu.jpg">
+	<div class="text-center myForm">
+		<c:url var="action" value="editproduct"></c:url>
+		<form:form action="${action}" modelAttribute="product"
+			enctype="multipart/form-data" method="post">
+			<table>
+				<c:choose>
+					<c:when test="${product.id gt 0}">
+						<tr>
+							<td>ID:</td>
+							<td><form:input class="input1" path="id" readonly="true" /></td>
+						</tr>
+					</c:when>
+				</c:choose>
+				<tr>
+					<td>Name:</td>
+					<td><form:input class="input1" path="name" /></td>
+				</tr>
+				<tr>
+					<td>Description:</td>
+					<td><form:input class="input1" path="description" /></td>
+				</tr>
+				<tr>
+					<td>Price:</td>
+					<td><form:input class="input1" path="price" /></td>
+				</tr>
+				<tr>
+				<td>Category:</td>
+				<td><form:select path="categoryid" required="true">
+				<c:forEach items="${categoryList}" var="category">
+								<form:option class="input1" value="${category.id}">${category.name}</form:option>
+							</c:forEach>
+								</form:select></td></tr>
+						<tr>
+								<td>Supplier:</td>
+				<td><form:select path="supplierid" required="true">
+				<c:forEach items="${supplierList}" var="supplier">
+								<form:option class="input1"  value="${supplier.id}">${supplier.name}</form:option>
+							</c:forEach>
+								</form:select></td></tr>
+				<tr>
+					<td>Image:</td>
+					<td><form:input type="file"
+							class=" btn btn-default btn-block form-control" path="image"
+							required="true" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="submit" class="btn btn-primary" value="Save" /></td>
+				</tr>
+			</table>
+		</form:form>
+	</div>
+	<div align="center">
+		<table class="table1" style="width: 80%">
+			<caption>Products</caption>
+			<thead>
+				<tr id="tr1">
+					<th>Product Id</th>
+					<th>Product Name</th>
+					<th>Product Description</th>
+					<th>Product Price</th>
+					<th>Category</th>
+					<th>Supplier</th>
+					<th>Image</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${productList}" var="product">
+					<tr id="tr1">
+						<td id="td1"><c:out value="${product.id}" />
+						<td id="td1"><c:out value="${product.name}" />
+						<td id="td1"><c:out value="${product.description}" />
+						<td id="td1"><c:out value="${product.price}" />
+						<td id="td1"><c:out value="${product.categoryid}" />
+						<td id="td1"><c:out value="${product.supplierid}" />
+						<td><div class="thumbnail">
+								<img height="100px" width="100px" alt="${product.id }"
+									src="<c:url value="/resources/images/${product.id }.jpg"></c:url>">
+							</div>
+						<td id="td1"><a href="addeditproduct/${product.id }"><img
+								alt="Edit" src=""></a>
+						<td id="td1"><a href="adddeleteproduct/${product.id }"><img
+								alt="Delete" src=""></a>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 
-	<c:url var="editaction" value="editproduct"></c:url>
-	<form:form action="${editaction}" modelAttribute="product"
-	enctype="multipart/form-data" method="post">
-	
-<center>ID:<form:input path="id" /><br>
-Name:<form:input path="name" /><br>
-Description:<form:input path="description" /><br>
-Price:<form:input path="price" /><br>
-    <tr>
-    <td>Category:</td>
-	<td><form:select path="categoryid" requried="true">
-	<c:forEach items="${categoryList}" var="category">
-	<form:option class="input1" value="${category.id }">${category.name}
-	</form:option>
-	</c:forEach>
-	</form:select>
-	</td>
-	</tr>
-	
-	<td>Supplier:</td>
-	<td><form:select path="supplierid" requried="true">
-	<c:forEach items="${supplierList}" var="supplier">
-	<form:option class="input1" value="${supplier.id }">${supplier.name}
-	</form:option>
-	</c:forEach>
-	</form:select>
-	</td>
-	
-  <td>Image:</td>
-  <td><form:input type="file"
-  class="btn btn-default btn-block form control" path="image"
-  requried="true"/></td>
-  <input type="submit" value="save">
-  </center>
-  </form:form>
-		
-		<div align="center">
-		<div class="container">
-  <table class="table">
-  <table style="width:100%">
-		<caption>
-		<center><h3>Product List</h3></center></caption>
-    <thead>
-      <tr>
-        <th>Product Id</th>
-		<th>Product Name</th>
-	<th>Product Description</th>
-		<th>Product Price</th>
-		<th>category</th>
-		<th>supplier</th>
-		<th>Image</th>
-		<th>Edit</th>
-		<th>Delete</th>
-      </tr>
-    </thead>
-		<tbody>	
-<c:forEach items="${productList }" var="product">
-<tr>
-<td><c:out value="${product.id }"></c:out></td>
-<td><c:out value="${product.name }"></c:out></td>
-<td><c:out value="${product.description }"></c:out></td>
-<td><c:out value="${product.price }"></c:out></td>
-<td><c:out value="${product.categoryid}"></c:out></td>
-<td><c:out value="${product.supplierid }"></c:out></td>
-<td><div class="thumbnail">
-<img height="100px" width="100px" alt="${product.id }"
-src="<c:url value="/resources/images/product/${product.id }.jpg"></c:url>">
- </div></td>
-
-<td><a href="addeditproduct/${product.id}"><img alt="Edit" src="C:\Users\shravya\Desktop\edits.jpg"></a></td>
-<td><a href="adddeleteproduct/${product.id}"><img alt="Delete" src="C:\Users\shravya\Desktop\deletes.jpg"></a></td>
-</tr>
-</c:forEach>
-</tbody>
-</table>
-</table>
-</div>	
-</div>
+	</div>
+	</div>
 </body>
 </html>
-		
-	
+

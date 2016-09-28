@@ -20,7 +20,8 @@ private int userid;
 private String productname;
 @Column(columnDefinition="int default 1")
 private int quantity;
-private float price;
+private double price;
+private double subtotal;
 public int getId() {
 	return id;
 }

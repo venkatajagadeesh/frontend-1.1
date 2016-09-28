@@ -2,8 +2,11 @@ package com.jaga.shoppingmall.dao;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,7 +23,7 @@ public class CartDAOImpl implements CartDAO{
 	}
 
 	@Transactional
-	public boolean saveOrUpdate(Cart cart) {
+	public boolean save(Cart cart) {
 		try {
 			sessionFactory.getCurrentSession().save(cart);
 			return true;
@@ -31,7 +34,18 @@ public class CartDAOImpl implements CartDAO{
 		}
 		
 	}
-
+	@Transactional
+	public boolean update(Cart cart) {
+		try {
+			sessionFactory.getCurrentSession().update(cart);
+			return true;
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
 
 	@Transactional
 	public boolean delete(Cart cart) {
@@ -62,8 +76,9 @@ public class CartDAOImpl implements CartDAO{
 		Query query=sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart>list= query.list();
 		
-		if(list==null)
+		if(list.isEmpty())
 		{
+			
 			return null;
 		}
 		else
@@ -73,19 +88,59 @@ public class CartDAOImpl implements CartDAO{
 	}
 	@Transactional
 	@SuppressWarnings("unchecked")
-	public Cart getproduct(int id) {
-		String hql="from Cart where productid= "+id;
+	public Cart getproduct(int productid,int userid) {
+		String hql="from Cart where productid= "+productid+"and userid="+userid;
 		@SuppressWarnings("rawtypes")
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		List<Cart>listproduct=query.list();
-		//List<Cart> listproduct = (List<Cart>) query.list();
-		return listproduct.get(id);
-	}
-	/*@Transactional
-	public void pay(int userid) {
+
+		if(listproduct.isEmpty())
+		{
+			
+			return null;
+		}
+		else
+		{
+			System.out.println("product");
+			return listproduct.get(0);
+		}
 		
-	}*/
+	}
+	@Transactional
+	public int getsize(int id){
+		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
+		c.add(Restrictions.eq("userid", id));
+		c.setProjection(Projections.count("userid"));
+		long count =(long) c.uniqueResult();
+		return (int) count;
+	}
 
+	@Transactional
+	public Cart getusercart(int uid) {
+		String hql="from Cart where userid= "+uid;
+		@SuppressWarnings("rawtypes")
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings("unchecked")
+		List<Cart>listusercart=query.list();
 
+		if(listusercart.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			return listusercart.get(0);
+		}
+	}
+
+	@Transactional
+	public double getprice(int userid) {
+		Criteria c=sessionFactory.getCurrentSession().createCriteria(Cart.class);
+		c.add(Restrictions.eq("userid", userid));
+		//c.add(Restrictions.eq("status","C"));
+		c.setProjection(Projections.sum("subtotal"));
+		double l= (double) c.uniqueResult();
+		return l;
+	}
 	
 }

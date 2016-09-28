@@ -5,7 +5,7 @@
 uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
+<head >
 <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -39,7 +39,7 @@ background-colour: black;
 }
 </style>
 </head>
-<body>
+<body background="C:\Users\KV Jagadeesh\Desktop\Codes\Images\htu.jpg">
 
 <div class="container">
      <%-- <a href="#" class="btn btn-info btn-lo> --%>
@@ -47,7 +47,7 @@ background-colour: black;
 </div>
 <center><h3> Welcome to shopping cart</h3></center>
 ${message}<br>
-<hr color="blue">
+<hr color="yellow">
 <div>
 <ul>
 <li><a href="Supplier">Supplier</a></li>

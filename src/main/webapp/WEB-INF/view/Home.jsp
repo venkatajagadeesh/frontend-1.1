@@ -205,7 +205,7 @@ h3, h4 {
 </style>
 </head>
 
-<body>
+<body background="C:\Users\KV Jagadeesh\Desktop\Codes\Images\htu.jpg">
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header"></div>
@@ -223,9 +223,6 @@ h3, h4 {
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
 				
-			<span class="glyphicon glyphicon-user">Admin</span>
-			
-			
 			<li><a href="Cart"> <span
 					class="glyphicon glyphicon-shopping-cart"></span>Cart
 			</a></li>
@@ -244,7 +241,7 @@ h3, h4 {
 			</sec:authorize>
 		</ul>
 
-		<div class="col-sm-4 col-sm-offset-0">
+		<!-- <div class="col-sm-4 col-sm-offset-0">
 			<div id="imaginary_container">
 				<div class="input-group stylish-input-group">
 					<input type="text" class="form-control" placeholder="Search">
@@ -256,13 +253,15 @@ h3, h4 {
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	</nav>
 <div class="container">
   <div class="btn-group btn-group-justified">
     <button type="button" class="btn btn-primary">LAPTOPS</button>
     <button type="button" class="btn btn-primary">MOBILES</button>
-     <button type="button" class="btn btn-primary">TV</button>
+     <button type="button" class="btn btn-primary">WATCHES</button>
+      <button type="button" class="btn btn-primary">CLOTHING</button>
+       <button type="button" class="btn btn-primary">FOOTWEAR</button>
    
   </div>
   </div>  
@@ -283,20 +282,24 @@ h3, h4 {
 			<!--   Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active">
-					<img src="http://www.amplebay.com/media/catalog/category/Macbook-Banner.png" alt="SHOP HAPPY"
-						width="460" height="345">
+					<img src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\retu.jpg" alt="SHOP HAPPY"
+						width="600" height="500">
 				</div>
 
 				<div class="item">
-					<img src="https://webby-gallery-production.s3.amazonaws.com/uploads/asset/image/entry-asset-7989/optimized_entry_id_131550_idx_0_asset_id_1655.jpg"
+					<img src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\rew.jpg"
 						alt="FEEL THE LUXURY" width="460" height="345">
 				</div>
 
 				<div class="item">
-					<img src="http://2.bp.blogspot.com/-A85WHuwihGY/UJdvGqNcCJI/AAAAAAAAAsc/AkDGobcbdEw/s1600/sony+bravia+india+ad+more+bright.jpg.jpg"
+					<img src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\ytuop.jpg"
 						alt="BEAUTY" width="460" height="345">
 				</div>
 
+				<div class="item">
+					<img src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\ewer.jpg"
+						alt="BEAUTY" width="460" height="345">
+				</div>
 				
 
 			<!-- Left and Right Controllers -->
@@ -311,19 +314,18 @@ h3, h4 {
 			</a>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="col-sm-4">
 			<p class="text-center">
 				<strong>LAPTOPS</strong>
 			</p>
 			<br> <a href="#demo" data-toggle="collapse"> <img
-				src="http://images.apple.com/macbook-air/images/overview_wireless_hero.jpg" class="img-square person" alt="Random Name"
+				src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\ggh.jpg" class="img-square person" alt="Random Name"
 				width="100" height="100">
 			</a>>
 			</div>
 			 <button type="button" class="btn btn-info">Buy now</button>
-         <button type="button" class="btn btn-warning">Add to cart</button>  
+         <button type="button" class="btn btn-warning">View</button>  
 			
 		</div>
 		
@@ -338,21 +340,21 @@ h3, h4 {
 			
 		</div> 
 		<button type="button" class="btn btn-info">Buy now</button>
-         <button type="button" class="btn btn-warning">Add to cart</button> <br>
-		<div class="col-sm-4">
+         <button type="button" class="btn btn-warning">View</button> <br>
+		<!-- <div class="col-sm-4">
 			<p class="text-center">
-				<strong>TV</strong>
+				<strong>WATCHES</strong>
 			</p>
 			<br> <a href="#demo3" data-toggle="collapse"> <img
-				src="http://indianpricelist.net/wp-content/uploads/2012/11/4K-X-Reality-PRO-Picture-Engine-and-Resolution.png" class="img-square person" alt="Random Name"
+				src="C:\Users\KV Jagadeesh\Desktop\Codes\Images\hgh.jpg" class="img-square person" alt="Random Name"
 				width="100" height="100">
 			</a>
 			 <button type="button" class="btn btn-info">Buy now</button>
-         <button type="button" class="btn btn-warning">Add to cart</button> 
-		</div>
+         <button type="button" class="btn btn-warning">View</button> 
+		</div> -->
 
 
-	<table>
+	<%-- <table>
 		<c:forEach items="${productList}" var="product">
 			<tr>
 				<td><c:out value="${product.name}" /></td>
@@ -370,7 +372,7 @@ h3, h4 {
 					</form:form></td>
 			</tr>
 		</c:forEach>
-	</table>
+	</table --%>
 	<div ng-view></div>
 
 

@@ -42,12 +42,12 @@ public class AdminController {
 		     if (authority.getAuthority().equals(role)) 
 		     {
 		    	 session.setAttribute("UserLoggedIn", "true");
-		    	 return "/Home";
+		    	 return "redirect:/";
 		     }
 		     else 
 		     {
 		    	 session.setAttribute("Administrator", "true");
-			 return "/Admin";
+			 return "redirect:/Admin";
 		     }
 	}
 		return "/Home";

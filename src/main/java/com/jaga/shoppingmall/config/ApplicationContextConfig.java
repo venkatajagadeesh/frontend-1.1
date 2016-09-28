@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.jaga.shoppingmall.dao.CartDAO;
@@ -23,10 +22,13 @@ import com.jaga.shoppingmall.dao.ProductDAO;
 import com.jaga.shoppingmall.dao.ProductDAOImpl;
 import com.jaga.shoppingmall.dao.SupplierDAO;
 import com.jaga.shoppingmall.dao.SupplierDAOImpl;
+import com.jaga.shoppingmall.dao.UserDetailsDAO;
+import com.jaga.shoppingmall.dao.UserDetailsDAOImpl;
 import com.jaga.shoppingmall.model.Cart;
 import com.jaga.shoppingmall.model.Category;
 import com.jaga.shoppingmall.model.Product;
 import com.jaga.shoppingmall.model.Supplier;
+import com.jaga.shoppingmall.model.UserDetails;
 
 @Configuration
 @ComponentScan("com.niit.")
@@ -97,5 +99,11 @@ public SupplierDAO getSupplierDAO(SessionFactory sessionFactory){
 public CartDAO getcartDAO(SessionFactory sessionFactory){
 	
 	return new CartDAOImpl(sessionFactory);
+}
+@Autowired
+@Bean(name="userDetailsDAO")
+public UserDetailsDAO getuserDetailsDAO(SessionFactory sessionFactory){
+	
+	return new UserDetailsDAOImpl(sessionFactory);
 }
 }

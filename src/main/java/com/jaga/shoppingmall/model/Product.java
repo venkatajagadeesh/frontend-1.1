@@ -1,6 +1,7 @@
 package com.jaga.shoppingmall.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -15,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class Product {
 	
 		@Id
+		@GeneratedValue
        private int id;
        private String name;
        private String description;
